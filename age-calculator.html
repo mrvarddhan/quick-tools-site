@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exam Age Calculator Online (Calculate Age on Cut-Off Date) - Free Tool</title>
+  <meta name="description" content="Calculate your exact age in years, months, and days on any official exam cut-off date for SSC, UPSC, Railway, IBPS, and State PSC forms." />
+  <style>
+    * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background: #f4f6f9; color: #1f2937; margin: 0; padding: 0; line-height: 1.6; }
+    nav { background: #1e3a8a; color: #fff; padding: 14px 20px; }
+    nav a { color: #fff; text-decoration: none; font-weight: 700; font-size: 1.1rem; }
+    header { background: #1d4ed8; color: #fff; padding: 22px 20px; text-align: center; }
+    header h1 { margin: 0; font-size: 1.6rem; }
+    .container { max-width: 820px; margin: 20px auto; padding: 0 16px; }
+    .ad-slot { background: #e5e7eb; border: 1px dashed #9ca3af; color: #6b7280; text-align: center; padding: 18px; margin: 16px 0; border-radius: 6px; font-size: 0.85rem; }
+    .tool-card { background: #fff; padding: 24px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+    .date-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+    @media (max-width: 600px) { .date-grid { grid-template-columns: 1fr; } }
+    .field label { display: block; font-weight: 600; margin-bottom: 6px; color: #374151; }
+    .field input[type="date"] { width: 100%; padding: 11px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 1rem; }
+    .primary-btn { background: #16a34a; color: #fff; border: none; padding: 12px 22px; font-size: 1rem; font-weight: 600; border-radius: 8px; cursor: pointer; width: 100%; }
+    .primary-btn:hover { background: #15803d; }
+    .result-box { display: none; margin-top: 20px; padding: 20px; background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 10px; text-align: center; }
+    .age-main { font-size: 1.5rem; font-weight: 700; color: #1e40af; margin-bottom: 12px; }
+    .sub-stats { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 10px; font-size: 0.9rem; color: #374151; background: #fff; padding: 12px; border-radius: 8px; }
+    .seo-content { background: #fff; padding: 24px; border-radius: 12px; margin-top: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+    footer { text-align: center; padding: 24px; color: #6b7280; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+
+<nav><a href="index.html">&larr; Back to All Tools</a></nav>
+
+<header>
+  <h1>Exam Age Calculator</h1>
+  <p style="margin:4px 0 0; font-size:0.95rem;">Find your exact age in Years, Months, and Days as on any exam cut-off date</p>
+</header>
+
+<div class="container">
+  <div class="ad-slot">Google AdSense Responsive Banner</div>
+
+  <div class="tool-card">
+    <div class="date-grid">
+      <div class="field">
+        <label for="dobInput">Date of Birth:</label>
+        <input type="date" id="dobInput" />
+      </div>
+      <div class="field">
+        <label for="targetDateInput">Age as on Date (Cut-Off Date):</label>
+        <input type="date" id="targetDateInput" />
+      </div>
+    </div>
+
+    <button class="primary-btn" onclick="calculateAge()">Calculate Exact Age</button>
+
+    <div class="result-box" id="resultBox">
+      <div style="font-size:0.9rem; color:#4b5563;">Your Exact Age Is:</div>
+      <div class="age-main" id="ageMainText"></div>
+      <div class="sub-stats" id="subStatsText"></div>
+    </div>
+  </div>
+
+  <div class="ad-slot">Google AdSense Rectangle</div>
+
+  <article class="seo-content">
+    <h2>Why Use an Exam Cut-Off Age Calculator?</h2>
+    <p>Recruitment notifications for SSC, UPSC, Railway (RRB), IBPS, and State Public Service Commissions specify an exact cut-off date (such as 1st January or 1st August) to determine minimum and maximum age eligibility. Calculating manually across leap years and 30/31-day months often leads to mistakes.</p>
+    <h2>How to Calculate Your Age Online</h2>
+    <ol>
+      <li><strong>Select your Date of Birth:</strong> Enter the date printed on your Class 10th matriculation certificate.</li>
+      <li><strong>Select the Cut-Off Date:</strong> By default, today's date is selected. Change it to the official cut-off date mentioned in your exam notification.</li>
+      <li><strong>Click Calculate:</strong> Instantly view your exact age in years, months, days, and total days lived.</li>
+    </ol>
+  </article>
+</div>
+
+<footer>
+  <p>&copy; 2026 QuickToolsIndia | <a href="index.html">Home</a> | <a href="privacy-policy.html">Privacy Policy</a></p>
+</footer>
+
+<script>
+  // Set default target date to today
+  document.getElementById('targetDateInput').valueAsDate = new Date();
+
+  function calculateAge() {
+    const dobVal = document.getElementById('dobInput').value;
+    const targetVal = document.getElementById('targetDateInput').value;
+
+    if (!dobVal || !targetVal) {
+      alert("Please select both Date of Birth and Target Date.");
+      return;
+    }
+
+    const dob = new Date(dobVal);
+    const target = new Date(targetVal);
+
+    if (dob > target) {
+      alert("Date of Birth cannot be after the Target Date.");
+      return;
+    }
+
+    let years = target.getFullYear() - dob.getFullYear();
+    let months = target.getMonth() - dob.getMonth();
+    let days = target.getDate() - dob.getDate();
+
+    if (days < 0) {
+      months--;
+      const prevMonthDays = new Date(target.getFullYear(), target.getMonth(), 0).getDate();
+      days += prevMonthDays;
+    }
+
+    if (months < 0) {
+      years--;
+      months += 12;
+    }
+
+    const diffTime = Math.abs(target - dob);
+    const totalDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+    const totalWeeks = Math.floor(totalDays / 7);
+    const totalMonths = (years * 12) + months;
+
+    document.getElementById('ageMainText').innerText = `${years} Years, ${months} Months, ${days} Days`;
+    document.getElementById('subStatsText').innerHTML = `
+      <div><strong>Total Months:</strong> ${totalMonths.toLocaleString('en-IN')}</div>
+      <div><strong>Total Weeks:</strong> ${totalWeeks.toLocaleString('en-IN')}</div>
+      <div><strong>Total Days:</strong> ${totalDays.toLocaleString('en-IN')}</div>
+    `;
+    document.getElementById('resultBox').style.display = 'block';
+  }
+</script>
+
+</body>
+</html>

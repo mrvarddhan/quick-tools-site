@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Loan EMI Calculator India (Home, Car & Personal Loan) - Free Online Tool</title>
+  <meta name="description" content="Calculate your monthly Home Loan, Car Loan, or Personal Loan EMI in Indian Rupees (₹). View total interest payable and principal breakdown instantly." />
+  <style>
+    * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background: #f4f6f9; color: #1f2937; margin: 0; padding: 0; line-height: 1.6; }
+    nav { background: #1e3a8a; color: #fff; padding: 14px 20px; }
+    nav a { color: #fff; text-decoration: none; font-weight: 700; font-size: 1.1rem; }
+    header { background: #1d4ed8; color: #fff; padding: 22px 20px; text-align: center; }
+    header h1 { margin: 0; font-size: 1.6rem; }
+    .container { max-width: 860px; margin: 20px auto; padding: 0 16px; }
+    .ad-slot { background: #e5e7eb; border: 1px dashed #9ca3af; color: #6b7280; text-align: center; padding: 18px; margin: 16px 0; border-radius: 6px; font-size: 0.85rem; }
+    .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; background: #fff; padding: 24px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+    @media (max-width: 700px) { .calc-grid { grid-template-columns: 1fr; } }
+    .input-group { margin-bottom: 20px; }
+    .input-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+    .input-header label { font-weight: 600; color: #374151; }
+    .input-header input[type="number"] { width: 130px; padding: 6px 10px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 1rem; font-weight: 600; text-align: right; color: #1d4ed8; }
+    input[type="range"] { width: 100%; accent-color: #2563eb; cursor: pointer; }
+    .results-panel { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 20px; display: flex; flex-direction: column; justify-content: center; }
+    .emi-highlight { text-align: center; padding-bottom: 16px; border-bottom: 1px solid #e2e8f0; margin-bottom: 16px; }
+    .emi-highlight span { display: block; font-size: 0.9rem; color: #64748b; }
+    .emi-highlight strong { font-size: 2rem; color: #16a34a; }
+    .stat-row { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 0.95rem; }
+    .bar-container { height: 14px; background: #e2e8f0; border-radius: 7px; overflow: hidden; display: flex; margin-top: 14px; }
+    .bar-principal { background: #2563eb; height: 100%; }
+    .bar-interest { background: #f59e0b; height: 100%; }
+    .legend { display: flex; justify-content: space-between; font-size: 0.8rem; color: #475569; margin-top: 6px; }
+    .seo-content { background: #fff; padding: 24px; border-radius: 12px; margin-top: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+    footer { text-align: center; padding: 24px; color: #6b7280; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+
+<nav><a href="index.html">&larr; Back to All Tools</a></nav>
+
+<header>
+  <h1>Loan EMI Calculator (Home, Car & Personal Loan)</h1>
+  <p style="margin:4px 0 0; font-size:0.95rem;">Calculate exact monthly EMI and total interest payable in seconds</p>
+</header>
+
+<div class="container">
+  <!-- Top AdSense Slot -->
+  <div class="ad-slot">Google AdSense Leaderboard (High-CPC Finance Slot)</div>
+
+  <div class="calc-grid">
+    <!-- Left Inputs -->
+    <div>
+      <div class="input-group">
+        <div class="input-header">
+          <label for="amountNum">Loan Amount (₹)</label>
+          <input type="number" id="amountNum" value="1000000" min="10000" max="100000000" step="10000" />
+        </div>
+        <input type="range" id="amountRange" value="1000000" min="50000" max="20000000" step="50000" />
+      </div>
+
+      <div class="input-group">
+        <div class="input-header">
+          <label for="rateNum">Interest Rate (% p.a.)</label>
+          <input type="number" id="rateNum" value="8.5" min="1" max="30" step="0.1" />
+        </div>
+        <input type="range" id="rateRange" value="8.5" min="5" max="24" step="0.1" />
+      </div>
+
+      <div class="input-group" style="margin-bottom:0;">
+        <div class="input-header">
+          <label for="tenureNum">Loan Tenure (Years)</label>
+          <input type="number" id="tenureNum" value="15" min="1" max="30" step="1" />
+        </div>
+        <input type="range" id="tenureRange" value="15" min="1" max="30" step="1" />
+      </div>
+    </div>
+
+    <!-- Right Results -->
+    <div class="results-panel">
+      <div class="emi-highlight">
+        <span>Your Monthly EMI</span>
+        <strong id="emiOutput">₹9,847</strong>
+      </div>
+
+      <div class="stat-row">
+        <span>Principal Amount:</span>
+        <strong id="principalOutput">₹10,00,000</strong>
+      </div>
+      <div class="stat-row">
+        <span>Total Interest Payable:</span>
+        <strong id="interestOutput" style="color:#d97706;">₹7,72,531</strong>
+      </div>
+      <div class="stat-row">
+        <span>Total Payment (Principal + Interest):</span>
+        <strong id="totalOutput">₹17,72,531</strong>
+      </div>
+
+      <div class="bar-container">
+        <div class="bar-principal" id="barPrincipal" style="width: 56%;"></div>
+        <div class="bar-interest" id="barInterest" style="width: 44%;"></div>
+      </div>
+      <div class="legend">
+        <span>&#9632; Principal (<span id="pctPrincipal">56%</span>)</span>
+        <span>&#9632; Interest (<span id="pctInterest">44%</span>)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mid-Page AdSense Slot -->
+  <div class="ad-slot">Google AdSense Responsive Rectangle</div>
+
+  <!-- SEO Guide Section -->
+  <article class="seo-content">
+    <h2>How is Loan EMI Calculated?</h2>
+    <p>An Equated Monthly Installment (EMI) is the fixed monthly payment you make to a bank or lender until your loan is fully paid off. Each EMI includes both principal repayment and interest.</p>
+    <p><strong>EMI Formula:</strong> <code>EMI = [P &times; R &times; (1+R)^N] / [(1+R)^N - 1]</code></p>
+    <ul>
+      <li><strong>P</strong> = Principal loan amount</li>
+      <li><strong>R</strong> = Monthly interest rate (Annual Rate &divide; 12 &divide; 100)</li>
+      <li><strong>N</strong> = Loan tenure in months (Years &times; 12)</li>
+    </ul>
+
+    <h2>Tips to Reduce Your Home or Car Loan Interest</h2>
+    <ul>
+      <li><strong>Make One Extra EMI Per Year:</strong> Paying just one additional EMI toward your principal every year can cut a 20-year home loan tenure by nearly 3 to 4 years.</li>
+      <li><strong>Increase Down Payment:</strong> A higher upfront down payment lowers your principal amount and reduces total interest outflow.</li>
+      <li><strong>Compare Floating vs. Fixed Rates:</strong> Floating interest rates generally carry lower initial rates and zero prepayment penalties on individual home loans in India.</li>
+    </ul>
+  </article>
+</div>
+
+<footer>
+  <p>&copy; 2026 QuickToolsIndia | <a href="index.html">Home</a> | <a href="image-compressor.html">Image Compressor</a></p>
+</footer>
+
+<script>
+  const amountNum = document.getElementById('amountNum');
+  const amountRange = document.getElementById('amountRange');
+  const rateNum = document.getElementById('rateNum');
+  const rateRange = document.getElementById('rateRange');
+  const tenureNum = document.getElementById('tenureNum');
+  const tenureRange = document.getElementById('tenureRange');
+
+  function formatINR(num) {
+    return '₹' + Math.round(num).toLocaleString('en-IN');
+  }
+
+  function calculateEMI() {
+    const P = parseFloat(amountNum.value) || 0;
+    const annualRate = parseFloat(rateNum.value) || 0;
+    const years = parseFloat(tenureNum.value) || 1;
+
+    const r = annualRate / 12 / 100;
+    const n = years * 12;
+
+    let emi = 0;
+    if (r === 0) {
+      emi = P / n;
+    } else {
+      const factor = Math.pow(1 + r, n);
+      emi = (P * r * factor) / (factor - 1);
+    }
+
+    const totalPayment = emi * n;
+    const totalInterest = totalPayment - P;
+
+    document.getElementById('emiOutput').innerText = formatINR(emi);
+    document.getElementById('principalOutput').innerText = formatINR(P);
+    document.getElementById('interestOutput').innerText = formatINR(totalInterest);
+    document.getElementById('totalOutput').innerText = formatINR(totalPayment);
+
+    const pPct = totalPayment > 0 ? Math.round((P / totalPayment) * 100) : 50;
+    const iPct = 100 - pPct;
+
+    document.getElementById('barPrincipal').style.width = pPct + '%';
+    document.getElementById('barInterest').style.width = iPct + '%';
+    document.getElementById('pctPrincipal').innerText = pPct + '%';
+    document.getElementById('pctInterest').innerText = iPct + '%';
+  }
+
+  // Sync sliders and number boxes
+  function bindInputs(numInput, rangeInput) {
+    numInput.addEventListener('input', () => { rangeInput.value = numInput.value; calculateEMI(); });
+    rangeInput.addEventListener('input', () => { numInput.value = rangeInput.value; calculateEMI(); });
+  }
+
+  bindInputs(amountNum, amountRange);
+  bindInputs(rateNum, rateRange);
+  bindInputs(tenureNum, tenureRange);
+
+  calculateEMI();
+</script>
+
+</body>
+</html>
