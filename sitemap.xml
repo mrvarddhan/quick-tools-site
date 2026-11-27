@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://sitemaps.org">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://quick-tools-site.varddhan45.workers.dev/</loc>
   </url>
   <url>
-    <loc>https://quick-tools-site.varddhan45.workers.dev</loc>
+    <loc>https://quick-tools-site.varddhan45.workers.dev/image-compressor.html</loc>
   </url>
   <url>
-    <loc>https://quick-tools-site.varddhan45.workers.dev</loc>
+    <loc>https://quick-tools-site.varddhan45.workers.dev/emi-calculator.html</loc>
   </url>
   <url>
-    <loc>https://quick-tools-site.varddhan45.workers.dev</loc>
+    <loc>https://quick-tools-site.varddhan45.workers.dev/age-calculator.html</loc>
   </url>
   <url>
-    <loc>https://quick-tools-site.varddhan45.workers.dev</loc>
+    <loc>https://quick-tools-site.varddhan45.workers.dev/gst-calculator.html</loc>
   </url>
 </urlset>
